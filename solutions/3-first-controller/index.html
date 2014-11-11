@@ -1,12 +1,12 @@
-<html> <!-- Adding module directive -->
+<html ng-app="app">
 
 <head>
   <meta charset="utf-8">
   <title>first controller</title>
-  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
 </head>
 
-<body> <!-- Adding controller directive -->
+<body ng-controller="stura as stura">
 
   <div class="form-inline">
 
@@ -24,8 +24,7 @@
   <a ng-click="criteria='role';reverse=true" href="">Sortiere nach Rolle absteigend</a>
 
   <ul>
-    <!-- Updating ng-repeat expression -->
-    <li ng-repeat="member in stura | filter:query:strict | orderBy:criteria:reverse">
+    <li ng-repeat="member in stura.members | filter:query:strict | orderBy:criteria:reverse">
       <p>
         <strong>{{ member.name }}</strong>
         <small>{{ member.role }}</small>
@@ -33,12 +32,9 @@
     </li>
   </ul>
 
-  <script src="../bower_components/angular/angular.js"></script>
-  <script>
-
-    // Introducing iife, modules and controllers
-
-  </script>
+  <script src="../../bower_components/angular/angular.js"></script>
+  <script src="app.module.js"></script>
+  <script src="stura.js"></script>
 </body>
 
 </html>
