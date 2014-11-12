@@ -1,0 +1,19 @@
+<html ng-app="app">
+
+<head>
+  <meta charset="utf-8">
+  <title>first filter</title>
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body ng-controller="stura as stura">
+
+  <span>{{ stura.members | join:', ' }}</span>
+
+  <script src="../../bower_components/angular/angular.js"></script>
+  <script src="app.module.js"></script>
+  <script src="stura.js"></script>
+  <script src="join.js"></script>
+</body>
+
+</html>

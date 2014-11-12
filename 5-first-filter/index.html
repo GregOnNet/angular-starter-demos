@@ -1,0 +1,26 @@
+<html ng-app="app">
+
+<head>
+  <meta charset="utf-8">
+  <title>first filter</title>
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body ng-controller="stura as stura">
+
+
+  <!-- Introducing filters -->
+  <!-- adding a join filter taking a array and a separator -->
+  <ul>
+    <li ng-repeat="member in stura.members">
+      <stura-member></stura-member>
+    </li>
+  </ul>
+
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="app.module.js"></script>
+  <script src="stura.js"></script>
+  <script src="member.js"></script>
+</body>
+
+</html>
