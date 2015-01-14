@@ -23,7 +23,7 @@ module.exports = function(config) {
       'app/**/*.js',
 
       // specs testing app components
-      'test/unit/**/*Spec.js'
+      'test/**/*Spec.js'
     ],
 
 
