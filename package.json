@@ -21,5 +21,10 @@
   "bugs": {
     "url": "https://github.com/GregOnNet/angular-starter-demos/issues"
   },
-  "homepage": "https://github.com/GregOnNet/angular-starter-demos"
+  "homepage": "https://github.com/GregOnNet/angular-starter-demos",
+  "devDependencies": {
+    "jasmine-core": "^2.1.3",
+    "karma": "^0.12.31",
+    "karma-jasmine": "^0.3.4"
+  }
 }
