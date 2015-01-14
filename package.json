@@ -1,0 +1,25 @@
+{
+  "name": "angular-starter-demos",
+  "version": "0.0.1",
+  "description": "This is my angular playground",
+  "main": "none",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GregOnNet/angular-starter-demos.git"
+  },
+  "keywords": [
+    "angular",
+    "starter",
+    "beginner",
+    "samples"
+  ],
+  "author": "gregor.woiwode@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GregOnNet/angular-starter-demos/issues"
+  },
+  "homepage": "https://github.com/GregOnNet/angular-starter-demos"
+}
