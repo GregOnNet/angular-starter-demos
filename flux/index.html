@@ -1,0 +1,22 @@
+<html ng-app="flux.app">
+  <head>
+    <title>Flux enhancing UI composition</title>
+  </head>
+  <body>
+
+    <div ng-controller="jobCtrl as job">
+
+      <input ng-model="job.specification.name">
+      <input ng-model="job.specification.description">
+
+      <button ng-click="job.create()">Create job</button>
+      <button ng-click="job.logJob()">Log draft</button>
+    </div>
+
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/flux-angular/release/flux-angular.js"></script>
+  <script src="flux.app.module.js"></script>
+  <script src="job.js"></script>
+  <script src="jobCtrl.js"></script>
+  </body>
+</html>
