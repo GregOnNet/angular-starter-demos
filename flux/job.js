@@ -20,13 +20,12 @@
     };
 
     function saveDraft(job) {
-      // Prooving that Store context is passed.
-      console.log(this);
 
       this.job = job;
     }
 
     function getDraft() {
+      
       return this.job
     }
   }
