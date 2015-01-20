@@ -3,11 +3,11 @@
 
   angular
     .module('flux.app')
-    .controller('jobCtrl', jobCtrl);
+    .controller('describeJob', describeJob);
 
-  jobCtrl.$inject = ['flux', 'job'];
+  describeJob.$inject = ['flux', 'job'];
 
-  function jobCtrl(flux, job) {
+  function describeJob(flux, job) {
 
     var vm = this;
 
