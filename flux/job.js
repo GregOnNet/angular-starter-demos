@@ -11,15 +11,15 @@
 
       job : { },
       handlers : {
-        'job.create' : 'create'
+        'job.saveDraft' : 'saveDraft'
       },
-      create : create,
+      saveDraft : saveDraft,
       exports : {
         getDraft : getDraft
       }
     };
 
-    function create(job) {
+    function saveDraft(job) {
       // Prooving that Store context is passed.
       console.log(this);
 

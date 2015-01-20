@@ -12,12 +12,12 @@
     var vm = this;
 
     vm.specification = {};
-    vm.create = create;
+    vm.saveDraft = saveDraft;
     vm.logJob = logJob;
 
-    function create() {
+    function saveDraft() {
 
-      flux.dispatch('job.create', vm.specification);
+      flux.dispatch('job.saveDraft', vm.specification);
     }
 
     function logJob() {
