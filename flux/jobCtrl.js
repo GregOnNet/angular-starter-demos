@@ -12,15 +12,17 @@
     var vm = this;
 
     vm.specification = {};
-    vm.saveDraft = saveDraft;
     vm.logJob = logJob;
 
-    function saveDraft() {
+    linkToStore();
+
+    function linkToStore() {
 
       flux.dispatch('job.saveDraft', vm.specification);
     }
 
     function logJob() {
+
       console.log(job.getDraft());
     }
   }
