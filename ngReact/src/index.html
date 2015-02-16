@@ -1,0 +1,31 @@
+<html ng-app="app">
+
+<head>
+  <meta charset="utf-8">
+  <title>component | ngReact</title>
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body>
+
+  <sidebar-header
+    title="'Title'"
+    subtitle="'Subtitle'"
+  ></sidebar-header>
+
+  <!-- angular -->
+  <script src="../../bower_components/angular/angular.js"></script>
+
+  <!-- reactJS -->
+  <script src="../../bower_components/ngReact/ngReact.js"></script>
+  <script src="../../bower_components/react/react.js"></script>
+
+  <!-- app -->
+  <script src="app.module.js"></script>
+
+  <!-- sidebar -->
+  <script src="sidebar/sidebar.module.js"></script>
+  <script type="text/jsx" src="sidebar/HeaderComponent.js"></script>
+</body>
+
+</html>
