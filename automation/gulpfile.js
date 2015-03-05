@@ -20,9 +20,7 @@ gulp.task('serve', ['watch'], function(){
     appFiles,
     { startPath: paths.src,
       server: {
-        baseDir: "./" }
-    }
-  );
+      baseDir: "./" }});
 });
 
 gulp.task('watch', function(){
