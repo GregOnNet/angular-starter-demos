@@ -1,0 +1,53 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+  <title>sample | ngMessages</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body ng-controller="customer as customer">
+
+  <form name="customerForm">
+
+    <div class="form-group">
+      <label for="customerName">Name</label>
+      <input ng-model="customer.name" name="customerName"
+             required
+             class="form-control"
+             placeholder="Geben Sie bitte Ihren Namen ein...">
+    </div>
+
+    <div ng-messages="customerForm.customerName.$error">
+      <div ng-message="required">Bitte geben Sie Ihren Namen ein.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="customerHeight">Größe in cm</label>
+      <input ng-model="customer.height" name="customerHeight"
+             type="number"
+             max="280"
+             class="form-control"
+             placeholder="Wie groß sind Sie?">
+    </div>
+
+    <div ng-messages="customerForm.customerHeight.$error">
+      <div ng-message="max">Der bisher größte Mensch ist 2,72m.</div>
+    </div>
+
+    <button ng-disabled="customerForm.$invalid"
+            class="btn btn-default">Senden</button>
+
+  </form>
+
+  <!-- AngularJS -->
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-messages/angular-messages.js"></script>
+
+  <!-- App -->
+  <script src="customer.module.js"></script>
+  <script src="customer.js"></script>
+
+
+</body>
+
+</html>
