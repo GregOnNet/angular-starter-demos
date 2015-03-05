@@ -15,5 +15,5 @@ gulp.task('inject', function() {
   target
     .pipe(inject(bowerStream, {name: 'bower', relative: true}))
     .pipe(inject(appStream,   {name: 'app',   relative: true}))
-    .pipe(gulp.dest('./src'));
+    .pipe(gulp.dest('./.tmp'));
 });
