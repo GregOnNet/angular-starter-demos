@@ -1,8 +1,12 @@
 'use strict';
 
 var gulp    = require('gulp'),
-    wiredep = require('wiredep');
+    wiredep = require('wiredep').stream;
 
 gulp.task('inject', function() {
-  console.log('injected =)');
+
+  gulp
+    .src('./src/index.html')
+    .pipe(wiredep())
+    .pipe(gulp.dest('./src'));
 });
