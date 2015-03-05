@@ -10,8 +10,7 @@ gulp.task('inject', function() {
 
   var target      = gulp.src('./src/index.html'),
       bowerStream = gulp.src(bower(), {read:false}),
-      appStream   = gulp.src('./src/components/**/*.js')
-                        .pipe(angularFileSort());
+      appStream   = gulp.src('./src/components/**/*.js').pipe(angularFileSort());
 
   target
     .pipe(inject(bowerStream, {name: 'bower', relative: true}))
