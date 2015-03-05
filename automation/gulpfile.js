@@ -15,18 +15,6 @@ var appFiles = [
   paths.src + '/*.html'
 ];
 
-gulp.task('inject', function() {
-
-  var target      = gulp.src(paths.src + 'index.html'),
-      appStream   = gulp.src(paths.src + 'components/**/*.js').pipe(angularFileSort()),
-      bowerStream = gulp.src(bower(), {read:false});
-
-  target
-    .pipe(inject(appStream,   {name: 'app',   relative: true}))
-    .pipe(inject(bowerStream, {name: 'bower', relative: true}))
-    .pipe(gulp.dest(paths.src));
-});
-
 gulp.task('serve', ['watch'], function(){
   browserSync(
     appFiles,
@@ -41,4 +29,16 @@ gulp.task('watch', function(){
   gulp.watch([
     'bower.json'
   ], ['inject']);
+});
+
+gulp.task('inject', function() {
+
+  var target      = gulp.src(paths.src + 'index.html'),
+      appStream   = gulp.src(paths.src + 'components/**/*.js').pipe(angularFileSort()),
+      bowerStream = gulp.src(bower(), {read:false});
+
+  target
+    .pipe(inject(appStream,   {name: 'app',   relative: true}))
+    .pipe(inject(bowerStream, {name: 'bower', relative: true}))
+    .pipe(gulp.dest(paths.src));
 });
