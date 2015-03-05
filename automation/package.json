@@ -24,7 +24,6 @@
   "homepage": "https://github.com/GregOnNet/angular-starter-demos/automation",
   "devDependencies": {
     "gulp": "3.8.x",
-    "gulp-inject": "^1.2.0",
-    "wiredep": "2.2.x"
+    "gulp-inject": "^1.2.0"
   }
 }
