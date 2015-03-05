@@ -1,12 +1,14 @@
 'use strict';
 
-var gulp    = require('gulp'),
-    wiredep = require('wiredep').stream;
+var gulp   = require('gulp'),
+    inject = require('gulp-inject');
 
-gulp.task('inject', function() {
+gulp.task('index', function() {
 
-  gulp
-    .src('./src/index.html')
-    .pipe(wiredep())
+  var target  = gulp.src('./src/index.html'),
+      sources = gulp.src(['./src/components/**/*.js'], {read: false});
+
+  target
+    .pipe(inject(sources, {relative: true}))
     .pipe(gulp.dest('./src'));
 });
