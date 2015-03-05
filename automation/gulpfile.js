@@ -6,14 +6,16 @@ var gulp   = require('gulp'),
 
 var angularFileSort = require('gulp-angular-filesort');
 
+var srcDir = './src/';
+
 gulp.task('inject', function() {
 
-  var target      = gulp.src('./src/index.html'),
-      bowerStream = gulp.src(bower(), {read:false}),
-      appStream   = gulp.src('./src/components/**/*.js').pipe(angularFileSort());
+  var target      = gulp.src(srcDir + 'index.html'),
+      appStream   = gulp.src(srcDir + 'components/**/*.js').pipe(angularFileSort()),
+      bowerStream = gulp.src(bower(), {read:false});
 
   target
-    .pipe(inject(bowerStream, {name: 'bower', relative: true}))
     .pipe(inject(appStream,   {name: 'app',   relative: true}))
-    .pipe(gulp.dest('./.tmp'));
+    .pipe(inject(bowerStream, {name: 'bower', relative: true}))
+    .pipe(gulp.dest(srcDir));
 });
