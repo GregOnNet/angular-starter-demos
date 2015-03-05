@@ -9,7 +9,8 @@
         "beforeEach": false,
         "waits": false,
         "waitsFor": false,
-        "runs": false
+        "runs": false,
+        "angular": true,
     },
 
     "node": true,
@@ -37,5 +38,6 @@
     "sub": true,
     "strict": false,
     "white": true,
-    "unused": true
+    "unused": true,
+    "validthis": true,
 }
