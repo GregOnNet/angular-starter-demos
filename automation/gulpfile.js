@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp            = require('gulp'),
+    watch           = require('gulp-watch'),
     browserSync     = require('browser-sync'),
     inject          = require('gulp-inject'),
     bower           = require('main-bower-files'),
@@ -27,10 +28,13 @@ gulp.task('serve', ['watch'], function(){
     });
 });
 
-gulp.task('watch', function(){
-  gulp.watch([
-    'bower.json'
-  ], ['inject']);
+gulp.task('watch', ['inject'], function(){
+  var changingFiles = appFiles.slice();
+      changingFiles.push('./bower.json');
+
+  watch(changingFiles, function() {
+    gulp.start('inject');
+  });
 });
 
 gulp.task('inject', function() {
