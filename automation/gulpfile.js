@@ -18,9 +18,13 @@ var appFiles = [
 gulp.task('serve', ['watch'], function(){
   browserSync(
     appFiles,
-    { startPath: paths.src,
-      server: {
-      baseDir: "./" }});
+    { server: {
+        baseDir: "./src",
+        routes: {
+            '/bower_components': 'bower_components'
+        }
+      }
+    });
 });
 
 gulp.task('watch', function(){
