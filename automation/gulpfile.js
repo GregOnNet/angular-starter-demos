@@ -13,7 +13,7 @@ var paths = {
 
 var appFiles = [
   paths.src + 'components/**/*.js',
-  paths.src + '/*.html'
+  paths.src + '/**/*.html'
 ];
 
 gulp.task('serve', ['watch'], function(){
