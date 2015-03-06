@@ -4,7 +4,7 @@ var gulp            = require('gulp'),
     watch           = require('gulp-watch'),
     browserSync     = require('browser-sync'),
     inject          = require('gulp-inject'),
-    bower           = require('main-bower-files'),
+    getBowerFiles   = require('main-bower-files'),
     angularFileSort = require('gulp-angular-filesort');
 
 var paths = {
@@ -17,15 +17,14 @@ var appFiles = [
 ];
 
 gulp.task('serve', ['watch'], function(){
-  browserSync(
-    appFiles,
-    { server: {
-        baseDir: "./src",
-        routes: {
-            '/bower_components': 'bower_components'
-        }
+  browserSync(appFiles, {
+    server: {
+      baseDir: "./src",
+      routes: {
+          '/bower_components': 'bower_components'
       }
-    });
+    }
+  });
 });
 
 gulp.task('watch', ['inject'], function(){
@@ -38,10 +37,9 @@ gulp.task('watch', ['inject'], function(){
 });
 
 gulp.task('inject', function() {
-
   var target      = gulp.src(paths.src + 'index.html'),
       appStream   = gulp.src(paths.src + 'components/**/*.js').pipe(angularFileSort()),
-      bowerStream = gulp.src(bower(), {read:false});
+      bowerStream = gulp.src(getBowerFiles(), {read:false});
 
   target
     .pipe(inject(appStream,   {name: 'app',   relative: true}))
