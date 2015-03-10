@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <!-- bower:css -->
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+  <!-- endinject -->
+</head>
+<body ng-controller="WatchController as watcher">
+
+    {{ watcher.status }}
+
+    <br>
+
+    <select ng-model="watcher.rechenzentrum"
+            ng-options="rz for rz in watcher.rechenzentren">
+      <option value="">-- Wählen Sie ein Rechenzentrum --</option>
+    </select>
+
+    <br>
+
+    <select ng-model="watcher.netzwerk"
+            ng-options="netzwerk for netzwerk in watcher.netzwerke">
+      <option value="">-- Wählen Sie ein Netzwerk --</option>
+    </select>
+
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="WatchController.js"></script>
+</body>
+</html>
