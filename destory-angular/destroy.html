@@ -1,0 +1,42 @@
+<!doctype html>
+<html ng-app='app'>
+<head>
+  <title>Break digest</title>
+</head>
+<body ng-controller='Destroyer as destroyer'>
+
+  {{ destroyer.a }} | {{ destroyer.b }}
+
+  <button ng-click="destroyer.changeA()">Destroy App</button>
+
+  <script src="../bower_components/angular/angular.js"></script>
+  <script charset="utf-8">
+    (function() {
+      "use strict";
+
+      angular
+        .module('app', [])
+        .controller('Destroyer', Destroyer);
+
+      function Destroyer() {
+        var vm = this;
+        vm.a = 'a';
+        vm.b = 'b';
+        vm.changedTimes = 0;
+
+        vm.changeA = changeA;
+
+        function changeA() {
+          vm.a = 'a_' + ++vm.changedTimes;
+          changeB();
+        }
+
+        function changeB() {
+          vm.b = 'b_' + vm.changedTimes;
+          changeA();
+        }
+      }
+    }());
+  </script>
+</body>
+</html>
