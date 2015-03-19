@@ -1,0 +1,27 @@
+<!doctype>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+
+    <script charset="utf-8">
+      (function() {
+        'use strict';
+
+        function add(a) {
+
+          return function(b) {
+            return a+b;
+          }
+        }
+
+        var add10To = add(10);
+        console.log(add10To(5));
+
+        var add05To = add(5);
+        console.log(add10To(add05To(5)));
+      }());
+    </script>
+  </body>
+</html>
