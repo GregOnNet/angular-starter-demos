@@ -29,9 +29,7 @@
           .provider('rocketLauncher', rocketLauncherProvider)
           .factory('engine', engineFactory)
           .controller('RocketController', RocketController)
-          .config(['rocketLauncherProvider', function configureRocketLauncher(rocketLauncherProvider) {
-            rocketLauncherProvider.enableWarp(true);
-          }]);
+          .config(configureRocketLauncher);
 
         function RocketLauncher(engine, useWarp) {
           this.launchedTimes = 0;
@@ -50,7 +48,7 @@
               useWarp = value;
               console.log('Configuring Warp to:', useWarp);
             }
-
+            
             this.$get = ['engine', function rocketLauncherFactory(engine) {
               console.log('$get is called...');
               return new RocketLauncher(engine, useWarp);
@@ -59,6 +57,11 @@
 
         function engineFactory() {
           return { speed : 7.9 }; // 28440 km/h // Mach 20
+        }
+
+        configureRocketLauncher.$inject = ['rocketLauncherProvider'];
+        function configureRocketLauncher(rocketLauncherProvider) {
+          rocketLauncherProvider.enableWarp(true);
         }
 
         RocketController.$inject = ['rocketLauncher', 'APPID', 'clientId']
