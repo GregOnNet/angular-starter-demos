@@ -1,0 +1,56 @@
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>ng-app directive</title>
+  </head>
+  <body ng-controller="RocketController">
+
+    <p>
+      {{ 'Hey there' }}
+    </p>
+
+    <p>
+      4+4={{ 4 + 4 }}
+    </p>
+
+    <script src="../bower_components/angular/angular.js"></script>
+    <script charset="utf-8">
+      (function() {
+        'use strict';
+
+        //
+        angular
+          .module('app', [])
+          .factory('engine', engineFactory)
+          .factory('rocketLauncherFactory', rocketLauncherFactory)
+          .service('RocketLauncherService', ['engine', RocketLauncher])
+          .controller('RocketController', RocketController);
+
+        function RocketLauncher(engine) {
+          this.engine = engine;
+          this.launchedTimes = 0;
+          this.launch = launch;
+
+          function launch() {
+            this.launchedTimes++;
+          }
+        }
+
+        function engineFactory() {
+          return { speed : 7.9 }; // 28440 km/h // Mach 20
+        }
+
+        rocketLauncherFactory.$inject = ['engine']
+        function rocketLauncherFactory(engine) {
+          return new RocketLauncher(engine);
+        }
+
+        RocketController.$inject = ['rocketLauncherFactory', 'RocketLauncherService']
+        function RocketController(rocketLauncherFactory, RocketLauncherService){
+          console.log(rocketLauncherFactory);
+          console.log(RocketLauncherService);
+        }
+      }());
+    </script>
+  </body>
+</html>
