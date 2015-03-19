@@ -1,0 +1,70 @@
+<!doctype html>
+<html ng-app='app'>
+<head>
+  <title>One Time Bindings</title>
+  <meta name="source" content="http://toddmotto.com/angular-one-time-binding-syntax/">
+</head>
+<body ng-controller='Controller as ctrl'>
+
+  <p>
+    Hello {{ ::ctrl.user.name }} {{ ::ctrl.user.surname }}
+  </p>
+
+  <p>
+    You are not {{ ::ctrl.user.name }} {{ ::ctrl.user.surname }}?
+    <strong>Correct your user information.</strong>
+  </p>
+
+  <hr>
+  <input ng-model="user.name">
+  <input ng-model="user.surname">
+  <button>Login</button>
+
+  <ul>
+    <li ng-repeat="order in ::ctrl.orders">
+      <p>{{ order.title }} - Rating: {{ order.rating }}</p>
+      <small>{{ order.producer }}</small></li>
+  </ul>
+
+  <input ng-model="newOrder.title">
+  <input ng-model="newOrder.producer">
+  <button ng-click="ctrl.add(newOrder)">Add item to cart</button>
+
+  <script src="../bower_components/angular/angular.js"></script>
+  <script charset="utf-8">
+    (function() {
+      'use strict';
+
+      angular
+        .module('app', [])
+        .controller('Controller', Controller);
+
+      function Controller() {
+        var vm = this;
+
+        vm.add = add;
+
+        function add(newOrder) {
+          vm.orders.push(newOrder);
+          console.log(vm.orders);
+        }
+
+        vm.user = {
+          'name': 'Gregor',
+          'surname': 'Woiwode'
+        };
+
+        vm.orders = [{
+          'title': 'Magic Mouse',
+          'producer': 'Magic Company',
+          'rating': '1'
+        }, {
+          'title': 'Desk',
+          'producer': 'carpenter',
+          'rating': '5'
+        }];
+      }
+    }());
+  </script>
+</body>
+</html>
