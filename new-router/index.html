@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trying out the new router</title>
+</head>
+<body ng-app="app" ng-controller="AppController as app">
+
+  <a router-link="detail({ id:5 })">Go to detail</a> | 
+  <a href="http://angular.github.io/router/">See Documentation</a>
+
+  <div router-view-port></div>
+
+  <script src="node_modules/angular/angular.js"></script>
+  <script src="node_modules/angular-new-router/dist/router.es5.js"></script>
+
+  <!-- app -->
+  <script src="app.js"></script>
+
+  <!-- components -->
+  <script src="components/home/home.js"></script>
+  <script src="components/detail/detail.js"></script>
+</body>
+</html>
