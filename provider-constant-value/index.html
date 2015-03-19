@@ -1,0 +1,73 @@
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>ng-app directive</title>
+  </head>
+  <body ng-controller="RocketController">
+
+    <p>
+      {{ 'Hey there' }}
+    </p>
+
+    <p>
+      4+4={{ 4 + 4 }}
+    </p>
+
+    <script src="../bower_components/angular/angular.js"></script>
+    <script charset="utf-8">
+      (function() {
+        'use strict';
+
+        //                name            config phase              run phase
+        // .provider      rocketLauncher  rocketLauncherProvider    rocketLauncher
+        // .constant      APPID           APPID                     APPID
+        // .value         clientId        -/-                       clientId
+        angular
+          .module('app', [])
+          .constant('APPID', 'VD3213_Ddsd%sf')
+          .value('clientId', 'Gregor')
+          .provider('rocketLauncher', rocketLauncherProvider)
+          .factory('engine', engineFactory)
+          .controller('RocketController', RocketController)
+          .config(['rocketLauncherProvider', function configureRocketLauncher(rocketLauncherProvider) {
+            rocketLauncherProvider.enableWarp(true);
+          }]);
+
+        function RocketLauncher(engine, useWarp) {
+          this.launchedTimes = 0;
+          this.launch = launch;
+          this.useWarp = useWarp;
+
+          function launch() {
+            this.launchedTimes++;
+          }
+        }
+
+        function rocketLauncherProvider() {
+            var useWarp = false;
+
+            this.enableWarp = function enableWarp(value) {
+              useWarp = value;
+              console.log('Configuring Warp to:', useWarp);
+            }
+
+            this.$get = ['engine', function rocketLauncherFactory(engine) {
+              console.log('$get is called...');
+              return new RocketLauncher(engine, useWarp);
+            }];
+        }
+
+        function engineFactory() {
+          return { speed : 7.9 }; // 28440 km/h // Mach 20
+        }
+
+        RocketController.$inject = ['rocketLauncher', 'APPID', 'clientId']
+        function RocketController(rocketLauncher, APPID, clientId){
+          console.log(rocketLauncher.useWarp);
+          console.log(APPID);
+          console.log(clientId);
+        }
+      }());
+    </script>
+  </body>
+</html>
