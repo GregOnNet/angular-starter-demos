@@ -2,7 +2,5 @@
   'use strict';
 
   angular
-    .module('cups', [
-      'cups.api'
-    ]);
+    .module('cups.api', []);
 }());

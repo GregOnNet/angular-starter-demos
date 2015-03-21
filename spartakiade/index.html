@@ -25,8 +25,10 @@
     <hr>
     <h2>Drunken cups</h2>
 
+    <input type="text" ng-model="query.mods" placeholder="Search your cups">
+
     <ul>
-      <li ng-repeat="cup in user.cups">
+      <li ng-repeat="cup in user.cups | filter:query:strict">
         <span>{{ cup.drunken | date:'dd.MM.yyyy HH:mm' }} {{ cup.drunken | date:'shortDate' }}</span>
         <strong>{{ cup.rating }}</strong>
         <small>
@@ -41,6 +43,8 @@
   <!-- App -->
   <script src="components/sipping-board/sippingBoard.module.js"></script>
   <script src="components/sipping-board/sippingBoard.controller.js"></script>
+  <script src="components/services/cups.api.module.js"></script>
+  <script src="components/services/cups.api.js"></script>
 </body>
 
 </html>

@@ -5,30 +5,33 @@
     .module('cups')
     .controller('UserController', UserController);
 
-  function UserController() {
-    this.newCup = {};
+  function UserController(cupsApi) {
+    var vm = this;
 
-    this.add = function(cup) {
+    vm.newCup = {};
+    vm.cups = [];
+
+    vm.add = add;
+
+    getCups();
+
+    function getCups(){
+      vm.cups = cupsApi.getCups();
+    }
+
+    function add(cup) {
       cup.drunken = new Date();
       cup.mods = cup.mods || ['no mods'];
 
-      this.cups.unshift(cup);
-      this.newCup = {};
+      vm.cups.unshift(cup);
+      vm.newCup = {};
     };
 
-    this.me = {
+    vm.me = {
       name: 'Gregor',
       surname: 'Woiwode'
     };
 
-    this.cups = [{
-      drunken : new Date(),
-      rating  : 3,
-      mods    : ['milk', 'sugar']
-    }, {
-      drunken : new Date(),
-      rating  : 3,
-      mods    : ['milk']
-    }];
+
   }
 }());
