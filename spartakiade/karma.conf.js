@@ -1,5 +1,6 @@
+'use strict';
 // Karma configuration
-// Generated on Sat Mar 21 2015 15:23:51 GMT+0100 (CET)
+// Generated on Wed Mar 18 2015 08:43:36 GMT+0100 (CET)
 
 module.exports = function(config) {
   config.set({
@@ -15,12 +16,19 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test/unit/**/*.spec.js'
+      './lib/angular.js',
+      './lib/angular-mocks.js',
+
+      './components/**/*.module.js',
+      './components/**/*.js',
+
+      './test/**/*.spec.js'
     ],
 
 
     // list of files to exclude
     exclude: [
+      './**/*.e2e.spec.js'
     ],
 
 
@@ -50,7 +58,7 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // start these browsers
