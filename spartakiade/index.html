@@ -33,7 +33,7 @@
     </label>
 
     <ul>
-      <li ng-repeat="cup in user.cups | filter:query:strict">
+      <li ng-repeat="cup in user.cups | filterByMods:user.selectedMods">
         <span>{{ cup.drunken | date:'dd.MM.yyyy HH:mm' }} {{ cup.drunken | date:'shortDate' }}</span>
         <strong>{{ cup.rating }}</strong>
         <small>
@@ -48,6 +48,7 @@
   <!-- App -->
   <script src="components/sipping-board/sippingBoard.module.js"></script>
   <script src="components/sipping-board/sippingBoard.controller.js"></script>
+  <script src="components/sipping-board/cups.filterByMods.js"></script>
   <script src="components/services/cups.api.module.js"></script>
   <script src="components/services/cups.api.js"></script>
 </body>
