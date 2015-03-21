@@ -4,7 +4,8 @@
   angular
     .module('cups')
     .controller('UserController', UserController);
-
+  
+  UserController.$inject = ['cupsApi'];
   function UserController(cupsApi) {
     var vm = this;
 
