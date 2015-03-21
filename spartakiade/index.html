@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="cups">
+
+<head>
+  <title>Angular | Spartaikade</title>
+</head>
+
+<body>
+
+  <div ng-controller="UserController as user">
+    <span>You are not {{ ::user.me.name }} {{ ::user.me.surname }}?</span>
+
+    <hr>
+
+    <input type="text" ng-model="user.me.name" placeholder="Please type your name...">
+    <input type="text" ng-model="user.me.surname" placeholder="Please type your surname...">
+    <button>Login</button>
+
+    <hr>
+
+    <input type="number" ng-model="user.newCup.rating" placeholder="1 to 5">
+    <input type="text" ng-model="user.newCup.mods" ng-list placeholder="milk, sugar, ...">
+    <button ng-click="user.add(user.newCup)">Sipped</button>
+
+    <hr>
+    <h2>Drunken cups</h2>
+
+    <ul>
+      <li ng-repeat="cup in user.cups">
+        <span>{{ cup.drunken | date:'dd.MM.yyyy HH:mm' }} {{ cup.drunken | date:'shortDate' }}</span>
+        <strong>{{ cup.rating }}</strong>
+        <small>
+          <i ng-repeat="mod in cup.mods">{{ mod }}, </i> ...
+        </small>
+      </li>
+    </ul>
+  </div>
+
+  <script src="lib/angular.js"></script>
+
+  <!-- App -->
+  <script src="components/sipping-board/sippingBoard.module.js"></script>
+  <script src="components/sipping-board/sippingBoard.controller.js"></script>
+</body>
+
+</html>
