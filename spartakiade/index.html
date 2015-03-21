@@ -27,6 +27,11 @@
 
     <input type="text" ng-model="query.mods" placeholder="Search your cups">
 
+    <label ng-repeat="mod in user.allMods">
+      <input type="checkbox" ng-checked="user.selectedMods.indexOf(mod) > -1"
+             ng-click="user.toggleModSelection(mod)"> {{ mod }}
+    </label>
+
     <ul>
       <li ng-repeat="cup in user.cups | filter:query:strict">
         <span>{{ cup.drunken | date:'dd.MM.yyyy HH:mm' }} {{ cup.drunken | date:'shortDate' }}</span>

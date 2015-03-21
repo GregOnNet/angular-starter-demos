@@ -55,8 +55,6 @@
       });
 
       angular.copy(vm.allMods, vm.selectedMods);
-
-      console.log('Hey there!');
     }
   }
 }());
