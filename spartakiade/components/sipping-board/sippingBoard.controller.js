@@ -12,6 +12,9 @@
     vm.newCup = {};
     vm.cups = [];
 
+    vm.allMods = [];
+    vm.selectedMods = [];
+
     vm.add = add;
 
     $scope.$watchCollection(
