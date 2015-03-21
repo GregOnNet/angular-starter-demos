@@ -16,6 +16,7 @@
     vm.selectedMods = [];
 
     vm.add = add;
+    vm.toggleModSelection = toggleModSelection;
 
     $scope.$watchCollection(
       function() { return vm.cups; },
@@ -25,6 +26,15 @@
 
     function getCups(){
       vm.cups = cupsApi.getCups();
+    }
+
+    function toggleModSelection(mod) {
+      var index = vm.selectedMods.indexOf(mod);
+
+      if (index > -1)
+        vm.selectedMods.splice(index, 1);
+      else
+        vm.selectedMods.push(mod);
     }
 
     function add(cup) {
