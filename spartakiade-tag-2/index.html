@@ -1,0 +1,37 @@
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <title>Angular | Spartakiade</title>
+  </head>
+  <body ng-controller="UserController as user">
+    <p>
+      Hello {{ ::user.me.name }} {{ ::user.me.surname }}!
+    </p>
+
+    <hr>
+
+    <strong>You are not {{ ::user.me.name }} {{ ::user.me.surname }}?</strong>
+    <input type="text" ng-model="user.me.name">
+    <input type="text" ng-model="user.me.surname">
+    <button>Login</button>
+
+    <hr>
+    <h2>Drunken cups</h2>
+
+    <input type="text" ng-model="query.rating" placeholder="Search your cups">
+
+    <ul>
+      <li ng-repeat="cup in user.cups | filter:query">
+        <span>{{ cup.drunken }}</span>
+        <strong>{{ cup.rating }}</strong>
+        <small>
+          <i>{{ cup.mods.join(', ') }}</i>
+        </small>
+      </li>
+    </ul>
+
+    <script src="lib/angular.js"></script>
+    <script src="components/user/user.module.js"></script>
+    <script src="components/user/user.controller.js"></script>
+  </body>
+</html>
