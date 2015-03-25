@@ -1,0 +1,94 @@
+<!doctype html>
+<html ng-app="select-box">
+  <head>
+    <meta charset="utf-8">
+    <title>Custom select box with Angular</title>
+    <style type="text/css">
+
+      label {
+        display: inline-block;
+        border-radius: 2px 0 0 2px;
+        padding: 9px 5px;
+        width: 70px;
+        height: 32px;
+        background-color: #3F51B5;
+        color: #fff;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        cursor: pointer;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+      }
+
+      select.gp-select {
+        margin-bottom: 10px;
+        border: none;
+        border-bottom: 1px solid #ccc;
+        padding: 6px 12px;
+        background-color: #fff;
+        color: #555;
+        height: 32px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        outline: none;
+        cursor: pointer;
+      }
+
+    </style>
+  </head>
+  <body ng-controller="selectController as ctrl">
+
+    <select-box title="Title" ng-model="ctrl.selected" sb-options="item.id as item.name for item in ctrl.items">
+    </select-box>
+    
+    {{ ctrl.selected }}
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.6/angular.js"></script>
+    <script>
+      (function() {
+        "use strict";
+
+        angular
+          .module('select-box', [])
+          .directive('selectBox', directive)
+          .controller('selectController', controller);
+
+        function directive() {
+          return {
+            restrict: 'E',
+            require: ['title', 'ngModel', 'sbOptions'],
+            template: selectboxTemplate,
+            replace:true
+          }
+          
+          function selectboxTemplate(element, attrs) {
+            
+            return '<div>' +       
+                     '<label for="selectBox">' + attrs.title + '</label>' +
+                     '<select class="gp-select"' +
+                             'id="selectBox"' +
+                             'ng-model="' + attrs.ngModel +'"' +
+                             'ng-options="' + attrs.sbOptions + '">' +
+                        '<option value="">-- Wählen Sie ein Template --</option>' +
+                     '</select>' +
+                   '</div>'
+          }
+        }
+
+        function controller() {
+          this.items = [{'id' : 1, 'name': 'WinXP' },
+                        {'id' : 2, 'name': 'Win7'  },
+                        {'id' : 3, 'name': 'Win8'  }];
+
+          
+          this.selected = {};
+          
+          this.label = 'My Label';
+        }
+
+      }());
+    </script>
+  </body>
+</html>
