@@ -1,0 +1,31 @@
+.box {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  -moz-animation: slide-up 2s infinite;
+  -webkit-animation: slide-up 2s infinite;
+
+}
+@-webkit-keyframes bobble {
+  0% {
+    transform: translate3d(50px, 40px, 0px);
+    animation-timing-function: ease-in;
+  }
+  50% {
+    transform: translate3d(50px, 50px, 0px);
+    animation-timing-function: ease-out;
+  }
+  100% {
+    transform: translate3d(50px, 40px, 0px);
+  }
+}
+
+@-webkit-keyframes slide-up {
+  from {
+    top: 100%;
+  }
+  to {
+    top: 0;
+  }
+}

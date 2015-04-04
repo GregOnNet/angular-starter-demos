@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="scrollapp">
+  <head>
+    <title>Scrolling Page | Angular</title>
+    <link rel="stylesheet" href="/css/master.css">
+  </head>
+  <body>
+
+    <nav class="nav">
+      <a href="#/">Start</a>
+      <a href="#/about">About</a>
+      <a href="#/contact">Contact</a>
+    </nav>
+
+    <ng-view class="site"></ng-view>
+
+    <script src="./bower_components/angular/angular.js" charset="utf-8"></script>
+    <script src="./bower_components/angular-route/angular-route.js" charset="utf-8"></script>
+    <script src="./bower_components/angular-animate/angular-animate.js" charset="utf-8"></script>
+
+    <script src="./app.js" charset="utf-8"></script>
+  </body>
+</html>
