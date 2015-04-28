@@ -11,7 +11,7 @@
 
     <gp-datetime gp-label="{{ ctrl.label }}" ng-model="ctrl.date"></gp-datetime>
     {{ ctrl.date | date:'dd.MM.yyyy HH:mm' }}
-    
+
     <script src="../../bower_components/jquery/dist/jquery.js"></script>
     <script src="../../bower_components/moment/moment.js"></script>
     <script src="../../bower_components/moment/locale/de.js"></script>
@@ -43,18 +43,29 @@
           }
 
           function link(scope, element, attrs, ngModel) {
-            var input = angular.element(element.children()[1]);
-            input.datetimepicker({locale:'de'});
-            input.on('dp.change', function(updateEvent) {
-              scope.$apply(function() {
-                ngModel.$setViewValue(updateEvent.date.format());
+
+            var unregister = scope.$watch(function() { return ngModel.$modelValue; }, initialize);
+
+            function initialize(modelValue) {
+              ngModel.$setViewValue(modelValue);
+              unregister();
+              dateTimePicker();
+            }
+
+            function dateTimePicker() {
+              var input = angular.element(element.children()[1]);
+              input.datetimepicker({defaultDate: ngModel.$modelValue, locale: 'de'});
+              input.on('dp.change', function(updateEvent) {
+                scope.$apply(function() {
+                  ngModel.$setViewValue(updateEvent.date.format());
+                });
               });
-            });
+            }
           }
         }
 
         function controller() {
-          this.date = new Date();
+          this.date = moment().add(1, 'days').format();
           this.label = 'Date';
         }
 
