@@ -1,0 +1,64 @@
+<!doctype html>
+<html ng-app="select-box">
+  <head>
+    <meta charset="utf-8">
+    <title>Custom select box with Angular</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css">
+  </head>
+  <body ng-controller="dateController as ctrl">
+
+    <gp-datetime gp-label="{{ ctrl.label }}" ng-model="ctrl.date"></gp-datetime>
+    {{ ctrl.date | date:'dd.MM.yyyy HH:mm' }}
+    
+    <script src="../../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../../bower_components/moment/moment.js"></script>
+    <script src="../../bower_components/moment/locale/de.js"></script>
+    <script src="../../bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-rc.1/angular.min.js"></script>
+    <script>
+      (function() {
+        "use strict";
+
+        angular
+          .module('select-box', [])
+          .directive('gpDatetime', directive)
+          .controller('dateController', controller);
+
+        function directive() {
+          return {
+            restrict: 'E',
+            require: 'ngModel',
+            template: template,
+            link: link,
+            replace:true
+          }
+
+          function template(element, attrs) {
+            return '<div class="gp-datepicker">' +
+                     '<span class="gp-datepicker-label">' + attrs.gpLabel + '</span>' +
+                     '<input class="gp-datepicker-input" type="text">' +
+                   '</div>';
+          }
+
+          function link(scope, element, attrs, ngModel) {
+            var input = angular.element(element.children()[1]);
+            input.datetimepicker({locale:'de'});
+            input.on('dp.change', function(updateEvent) {
+              scope.$apply(function() {
+                ngModel.$setViewValue(updateEvent.date.format());
+              });
+            });
+          }
+        }
+
+        function controller() {
+          this.date = new Date();
+          this.label = 'Date';
+        }
+
+      }());
+    </script>
+  </body>
+  </html>

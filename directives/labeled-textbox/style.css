@@ -1,0 +1,38 @@
+.gp-datepicker {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+}
+.gp-datepicker-label {
+  display: inline-block;
+  float: left;
+  border: none;
+  border-radius: 2px 0 0 2px;
+  padding: 9px 5px;
+  width: 70px;
+  height: 32px;
+  background-color: #3F51B5;
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  cursor: default;
+
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+.gp-datepicker-input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0;
+  height: 32px;
+  padding-left:8px;
+
+  box-shadow: none;
+
+  position: relative;
+  z-index: 2;
+  float: left;
+  margin-bottom: 0;
+}
