@@ -1,0 +1,37 @@
+<html ng-app="app">
+  <head>
+    <title>Provider | Learning AngularJS</title>
+    <link rel="icon" href="../favicon.ico">
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../styles/samples.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Provider</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <!-- Our Code goes here -->
+      <section class="sample" ng-controller="locationController">
+
+        <div class="alert alert-info">
+          <strong>Postion: </strong> {{ position }}
+        </div>
+
+      </section>
+
+    </div>
+
+
+
+    <!-- AngularJS -->
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="./providerDemo.js"></script>
+  </body>
+</html>

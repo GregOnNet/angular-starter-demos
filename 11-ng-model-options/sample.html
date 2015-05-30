@@ -1,0 +1,50 @@
+<html ng-app="modelOptionsDemo">
+  <head>
+    <title>Learning AngularJS</title>
+    <link rel="icon" href="../favicon.ico">
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../styles/samples.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Sample</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <!-- Our Code goes here -->
+      <section class="sample" ng-controller="optionsController as vm">
+
+        <div class="form-group">
+          <label>Greeting</label>
+          <input ng-model="vm.greeting"
+                 ng-model-options="vm.greetingOptions"
+                 class="form-control"
+                 type="text">
+        </div>
+
+        <div class="form-group">
+          <label>Fullname</label>
+          <input ng-model="vm.fullname"
+                 ng-model-options="vm.fullnameOptions"
+                 minlength="5"
+                 class="form-control"
+                 type="text">
+        </div>
+        <small>{{ vm.fullname }}</small>
+      </section>
+
+    </div>
+
+
+
+    <!-- AngularJS -->
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="./model-options.js"></script>
+  </body>
+</html>

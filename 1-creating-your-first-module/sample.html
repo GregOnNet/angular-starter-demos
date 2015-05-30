@@ -1,0 +1,40 @@
+<html ng-app="moduleA">
+
+<head>
+  <title>Learning AngularJS</title>
+  <link rel="icon" href="../favicon.ico">
+  <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link href="../styles/samples.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">First Module</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Our Code goes here -->
+    <section class="sample" ng-controller="firstController">
+
+      <div class="alert alert-info">
+        <strong>Hallo</strong> {{ name }}
+      </div>
+      
+    </section>
+
+  </div>
+
+  <!-- AngularJS -->
+  <script src="../bower_components/angular/angular.js"></script>
+
+  <!-- App Sources -->
+  <script src="module.js" charset="utf-8"></script>
+
+</body>
+
+</html>

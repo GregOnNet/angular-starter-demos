@@ -1,0 +1,55 @@
+<html ng-app="customers">
+  <head>
+    <title>Learning AngularJS</title>
+    <link rel="icon" href="../favicon.ico">
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../styles/samples.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Kunden</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <!-- Our Code goes here -->
+      <section class="sample" ng-controller="customersController">
+
+        <div class="form-group">
+          <label>Kunden suchen</label>
+          <input ng-model="customerQuery.vorname"
+                 type="text"
+                 class="form-control">
+        </div>
+
+        <table class="table table-striped">
+          <tr>
+            <th>Vorname</th>
+            <th>
+              <a ng-click="reverse = !reverse" href="">Nachname</a>
+            </th>
+          </tr>
+          <tr ng-repeat="customer in customers
+                           | filter  : customerQuery
+                           | orderBy :'nachname':reverse">
+            <td>{{ customer.vorname }}</td>
+            <td>{{ customer.nachname }}</td>
+          </tr>
+        </table>
+
+      </section>
+
+    </div>
+
+    <!-- AngularJS -->
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="./customer.controller.js"></script>
+    <script src="./customer.factory.js"></script>
+    <script src="./customer.service.js"></script>
+  </body>
+</html>

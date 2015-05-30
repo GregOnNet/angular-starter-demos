@@ -1,0 +1,69 @@
+<html ng-app="contextDemo">
+  <head>
+    <title>Get into the angular context</title>
+    <link rel="icon" href="../favicon.ico">
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../styles/samples.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Common Directives I</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <!-- Our Code goes here -->
+      <section class="sample" ng-controller="contextController">
+
+        <button ng-click="start()" ng-disabled="interval !== undefined" class="btn btn-primary">Start</button>
+        <button ng-click="pause()" ng-disabled="interval === undefined" class="btn btn-default">Pause</button>
+
+        <hr>
+
+        <div class="alert"
+             ng-class="{
+               'alert-info': countDown > 80,
+               'alert-warning': countDown < 81,
+               'alert-danger': countDown < 51,
+             }">
+          {{ countDown }}
+        </div>
+
+        <div ng-if="countDown > 80" class="panel panel-info">
+          <div class="panel-heading">Rest...</div>
+          <div class="panel-body">
+            There is still time...
+          </div>
+        </div>
+
+        <div ng-show="countDown > 50 &&
+                      countDown < 81" class="panel panel-warning">
+          <div class="panel-heading">Hurry up a bit...</div>
+          <div class="panel-body">
+            But there is still enough time...
+          </div>
+        </div>
+
+        <div ng-hide="countDown > 50" class="panel panel-danger">
+          <div class="panel-heading">Oh man...</div>
+          <div class="panel-body">
+            Run boy, run!
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+
+
+    <!-- AngularJS -->
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="module.js"></script>
+  </body>
+</html>
