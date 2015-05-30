@@ -18,7 +18,7 @@
         .module('app', [])
         .controller('Destroyer', Destroyer);
 
-      function Destroyer() {
+      function Destroyer($timeout) {
         var vm = this;
         vm.a = 'a';
         vm.b = 'b';
@@ -28,7 +28,10 @@
 
         function changeA() {
           vm.a = 'a_' + ++vm.changedTimes;
-          changeB();
+
+          $timeout(function() {
+            changeB();
+          }, 0.1)
         }
 
         function changeB() {
