@@ -11,6 +11,8 @@
         "waitsFor": false,
         "runs": false,
         "angular": true,
+        "browser": true,
+        "element": true
     },
 
     "node": true,
@@ -39,5 +41,5 @@
     "strict": false,
     "white": true,
     "unused": true,
-    "validthis": true,
+    "validthis": true
 }
