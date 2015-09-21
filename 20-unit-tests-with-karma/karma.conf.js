@@ -20,7 +20,7 @@ module.exports = function(config) {
 
       './20-unit-tests-with-karma/src/*.module.js',
       './20-unit-tests-with-karma/src/*.js',
-      
+
       './20-unit-tests-with-karma/test/**/*.specs.js'
     ],
 
@@ -61,11 +61,16 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['Chrome', 'PhantomJS'],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: false,
+
+    phantomjsLauncher: {
+      // Have phantomjs exit if a ResourceError is encountered (useful if karma exits without killing phantom)
+      exitOnResourceError: true
+    }
   });
 };
