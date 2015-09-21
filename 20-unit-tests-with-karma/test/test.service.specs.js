@@ -2,19 +2,16 @@ describe('When an entry is added to the list', function() {
 
   beforeEach(angular.mock.module('testModule'));
 
-  var testFactory;
+  var testService;
 
   beforeEach(angular.mock.inject(
     function($injector) {
-      testFactory = $injector('testFactory');
+      testService = $injector.get('testService');
     }
   ));
 
   it('should have a version specified', function() {
-
-    expect(testFactory.version)
-      .toEqual('0.0.1');
-
+    expect(testService.getVersion())
+      .toBe('0.1.0');
   });
-
 });
