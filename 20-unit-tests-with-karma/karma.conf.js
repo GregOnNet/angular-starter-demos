@@ -21,6 +21,8 @@ module.exports = function(config) {
       './20-unit-tests-with-karma/src/*.module.js',
       './20-unit-tests-with-karma/src/*.js',
 
+      './20-unit-tests-with-karma/src/**/*.html',
+
       './20-unit-tests-with-karma/test/**/*.specs.js'
     ],
 
@@ -33,8 +35,16 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      './20-unit-tests-with-karma/src/**/*.html': ['ng-html2js']
     },
 
+
+    ngHtml2JsPreprocessor: {
+      moduleName: 'templates',
+      cacheIdFromPath: function(filepath) {
+        return filepath.replace('20-unit-tests-with-karma/', '');
+      }
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
